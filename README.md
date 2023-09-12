@@ -34,7 +34,7 @@ def getItemDetailsFromName(item_name: string):
 To define a query with named parameters we do the following: In the function that handles the routes add an argument. The name of the arguement is the same as the name of the parameter
 ```python
 @app.get("/item")
-def getItemFromParameters(q: Union[str, none], a: str):
+def getItemFromParameters(q: Union[str, None], a: str):
     # To define an optional parameter make its type a Union of the type you expect it to be and None
     return {"q": q, "a": a}
 ```
@@ -45,9 +45,9 @@ We first define how the request body will look like as a class then we add an ar
 from pydantic import BaseModel # Pydantic is used for data validation
 
 class Item(BaseModel):
-    name: Union[str, none] # To define an optional parameter
+    name: Union[str, None] # To define an optional parameter
     age: int # To say that an age will always be there
-    isGood: Union[bool, none] = None # To define an optional parameter but give it a default value
+    isGood: Union[bool, None] = None # To define an optional parameter but give it a default value
 
 @app.get("/item")
 def item(body: Item):
