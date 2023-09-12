@@ -39,10 +39,10 @@ def getItemFromParameters(q: Union[str, none], a: str):
     return {"q": q, "a": a}
 ```
 
-# Defining a route that has a JSON body
+### Defining a route that has a JSON body
 We first define how the request body will look like as a class then we add an arguement of the type of the class we defined. For example if we expect a POST request that will receive a JSON body with a name, isGood and age parameter you'd do the following:
 ```python
-from pydantic import BaseModel
+from pydantic import BaseModel # Pydantic is used for data validation
 
 class Item(BaseModel):
     name: Union[str, none] # To define an optional parameter
