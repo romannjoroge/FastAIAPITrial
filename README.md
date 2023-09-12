@@ -59,3 +59,12 @@ To run the server run the command:
 ```bash
 uvicorn main:app --reload
 ```
+
+## Common Mistakes
+If you don't add a decorator above the function it will not be accessed directly by a route. For example:
+```python
+app.get("/")
+def home():
+    return "This Works"
+```
+This will not be reachable since the app.get lacks the @ that makes it a decorator
