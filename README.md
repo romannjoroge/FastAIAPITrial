@@ -53,3 +53,9 @@ class Item(BaseModel):
 def item(body: Item):
     return {"name": body.name, "age": body.age, "isGood": body.isGood}
 ```
+
+## Running the server
+To run the server run the command:
+```bash
+uvicorn main:app --reload
+```
