@@ -1,4 +1,4 @@
-# Fast AI API
+# FastAPI
 This allows you to create an asynchronous REST API Server using python.
 
 ## Requirements
