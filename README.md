@@ -26,7 +26,7 @@ def home():
 Routes with query strings are defined in the following manner. The name of the query parameter is kept in curly braces in the api path defined in the decorator. The parameter can then be accessed in the function by defining a function with an arguement that's the same name as the query parameter
 ```python
 @app.get("/item/{item_name}")
-def getItemDetailsFromName(string: item_name):
+def getItemDetailsFromName(item_name: string):
     return data[item_name]
 ```
 
@@ -35,6 +35,21 @@ To define a query with named parameters we do the following: In the function tha
 ```python
 @app.get("/item")
 def getItemFromParameters(q: Union[str, none], a: str):
-    # To define an optional parameter
+    # To define an optional parameter make its type a Union of the type you expect it to be and None
     return {"q": q, "a": a}
+```
+
+# Defining a route that has a JSON body
+We first define how the request body will look like as a class then we add an arguement of the type of the class we defined. For example if we expect a POST request that will receive a JSON body with a name, isGood and age parameter you'd do the following:
+```python
+from pydantic import BaseModel
+
+class Item(BaseModel):
+    name: Union[str, none] # To define an optional parameter
+    age: int # To say that an age will always be there
+    isGood: Union[bool, none] = None # To define an optional parameter but give it a default value
+
+@app.get("/item")
+def item(body: Item):
+    return {"name": body.name, "age": body.age, "isGood": body.isGood}
 ```
