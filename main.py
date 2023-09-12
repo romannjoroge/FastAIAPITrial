@@ -1,3 +1,4 @@
+from typing import Union
 from pydantic import BaseModel, PositiveInt # This is to be used for data validation
 from fastapi import FastAPI
 
